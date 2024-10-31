@@ -1,0 +1,9 @@
+<div>
+	<?php if (!empty($edit_links)):?>
+	<?php foreach ($edit_links as $title => $link):?>
+	<span>[<?php echo $link['locale']['name']['eng'];?>]&nbsp;<a href="<?php echo $link['link'];?>"><?php echo htmlspecialchars($title);?></a></span><br/>
+	<?php endforeach;?>
+	<?php else:?>
+	<span><?php _e('This post is not yet translated.');?></span>
+	<?php endif;?>
+</div>

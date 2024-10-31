@@ -1,0 +1,57 @@
+<div class="wrap">
+
+	<h2 class="nav-tab-wrapper">
+		<a class="nav-tab nav-tab-active" href="admin.php?page=onesky_translate&section=translate">Translate Posts</a>
+		<a class="nav-tab" href="admin.php?page=onesky_translate&section=orders">View Orders</a>
+	</h2><br/>
+
+	<div class="post-type-tab">
+		<ul class="subsubsub">
+			<li class="posts">
+				<a class="<?php echo $post_type == 'post' ? 'current' : '';?>" href="admin?page=onesky_translate&type=post">
+					<?php _e('Posts');?>
+				</a>
+				|
+			</li>
+			<li class="pages">
+				<a class="<?php echo $post_type == 'page' ? 'current' : '';?>" href="admin?page=onesky_translate&type=page">
+					<?php _e('Pages');?>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="post-list-table">
+		<form id="posts-filter" method="GET" action="">
+		<input type="hidden" name="page" value="<?php echo $page;?>"/>
+		<?php $post_list_table->display(); ?>
+		</form>
+	</div>
+
+	<div class="metabox-holder right-quote">
+		<div class="postbox-container">
+			<div class="to-language postbox">
+				<h3 class="hndle"><?php _e('Translate to...');?></h3>
+				<div class="inside">
+					<select name="target-languages" id="target-language" data-placeholder="<?php _e('Select languages to translate');?>" multiple class="chzn-select">
+						<?php foreach ($languages as $l):?>
+						<option value="<?php echo $l['locale'];?>"><?php echo $l['name']['eng'];?></option>
+						<?php endforeach;?>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="postbox-container">
+			<div class="quotation postbox">
+				<h3 class="hndle"><?php _e('Quotation &amp; Order'); ?></h3>
+				<div class="inside">
+					<div id="quotation-box">
+						<p><?php _e('Please select posts and langauges.');?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

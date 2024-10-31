@@ -1,0 +1,46 @@
+.order-status {
+	display: inline-block;
+	width: 100px;
+}
+
+.item-status {
+	display: inline-block;
+	width: 70px;	
+}
+
+.order-number {
+	display: inline-block;
+	width: 80px;
+}
+
+.completed {
+	color: green;
+}
+
+.in-progress {
+	color: #E66F00;
+}
+
+.posted {
+	color: green;
+}
+
+.new-post {
+	color: #E66F00;
+}
+
+.post-translation-box {
+	margin-top: 8px;
+}
+
+.order-box {
+	margin-bottom: 20px;
+}
+
+.order-submit-box {
+	margin-bottom: 10px;
+}
+
+.order-detail-table {
+	margin-bottom: 10px;
+}

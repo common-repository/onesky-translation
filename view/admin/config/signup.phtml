@@ -1,0 +1,43 @@
+<div class="wrap">
+	<div id="icon-tools" class="icon32"><br/></div>
+	<h2><?php _e('Sign up OneSky'); ?></h2>
+
+	<p>
+		<span class="description"><?php _e('This plugin require to work with an OneSky account. If you already have one, click <a href="admin.php?page=onesky_admin.php&input_auth=true">here</a>.');?></span>
+	</p>
+	<form method="post" action="">
+
+		<table class="form-table">
+			<tbody>
+				<tr valign="top">
+					<th scope="row">
+						<label for="email"><?php _e('Email');?></label>
+					</th>
+					<td>
+						<input type="text" class="regular-text" name="email" value=""/><br/>
+						<span class="description"><?php _e('OneSky require your email to create an account for you. You will be notified when translation jobs are finished by email. You can manage your orders as well.');?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="locale"><?php _e('Site Default Language');?></label>
+					</th>
+					<td>
+						<select name="locale" id="locale">
+							<?php foreach ($languages as $l):?>
+							<option value="<?php echo $l['locale'];?>" <?php echo $l['locale'] == 'en_US' ? 'selected=selected' : '';?>><?php echo $l['name']['eng'];?></option>
+							<?php endforeach;?>
+						</select><br/>
+						<span class="description"><?php _e('Select the language your articles are written in.');?></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>
+			<input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes" />
+		</p>
+
+	</form>
+
+</div>

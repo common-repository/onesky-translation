@@ -1,0 +1,43 @@
+<div>
+	<div class="quote-main-detail">
+		<p>
+			<span class="quote-main-detail-text"><?php _e('Credit Remain');?></span><strong class="quote-main-detail-value">US$<?php echo number_format($quotation['credits'], 2);?></strong>
+		</p>
+		<p>
+			<span class="quote-main-detail-text"><?php _e('Total Amount');?></span><strong class="quote-main-detail-value <?php echo $insufficient ? 'insufficient-credit' : '';?>">US$<?php echo number_format($quotation['total_amount'], 2);?></strong>
+		</p>
+
+		<?php if ($insufficient):?>
+		<div id="message" class="updated">
+			<p>
+				<strong><?php _e('You don\'t have enough credits, please click <a href="' . $top_up_link . '" target="_blank">here</a> to top up.');?></strong>
+			</p>
+		</div>
+		<?php endif;?>
+
+		<form action="admin.php?page=onesky_translate&section=place_order" method="post">
+			<?php foreach ($posts as $p):?>
+			<input type="hidden" name="posts[]" value="<?php echo $p;?>"/>
+			<?php endforeach;?>
+			<?php foreach ($to_locales as $l):?>
+			<input type="hidden" name="to-locales[]" value="<?php echo $l;?>"/>
+			<?php endforeach;?>
+			<input type="hidden" name="from-locale" value="<?php echo $from_locale;?>"/>
+			<input type="hidden" name="place-order" value="true"/>
+			<input type="submit" id="place-order" name="submit" class="button-primary <?php echo $insufficient ? 'insufficient-button' : '';?>" value="<?php _e('Place Order');?>" <?php echo $insufficient ? 'disabled="disabled"' : '';?>/>
+		</form>
+	</div>
+
+	<div class="quote-sub-detail">
+		<p>
+			<span class="quote-sub-detail-text">Word Count</span><strong class="quote-sub-detail-value"><?php echo $quotation['word_count'];?> <?php _e('words');?></strong>
+		</p>
+		<ul>
+		<?php foreach ($quotation['quotation'] as $locale => $q):?>
+			<li>
+				<span class="quote-sub-detail-text"><?php echo $languages[$locale]['name']['eng']?></span><strong class="quote-sub-detail-value">US$<?php echo number_format($q['amount'], 2);?></strong>
+			</li>
+		<?php endforeach;?>
+		</ul>
+	</div>
+</div>

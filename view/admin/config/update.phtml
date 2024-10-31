@@ -1,0 +1,53 @@
+<div class="wrap">
+	<div id="icon-tools" class="icon32"><br/></div>
+	<h2><?php _e('OneSky API Config'); ?></h2>
+
+	<?php if ($saved):?>
+	<div id="message" class="updated">
+		<p><strong><?php _e('Settings saved.');?></strong></p>
+	</div>
+	<?php endif;?>
+
+	<p>
+		<span class="description"><?php _e('This plugin requires an account with OneSky. Click <a href="http://www.oneskyapp.com/sign-up/wordpress" target="_blank">here</a> to register if you do not have one.');?></span>
+	</p>
+	<form method="post" action="">
+
+		<table class="form-table">
+			<tbody>
+				<tr valign="top">
+					<th scope="row">
+						<label for="api-key"><?php _e('API Key');?></label>
+					</th>
+					<td>
+						<input type="text" class="regular-text" name="api-key" value="<?php _e($api_key);?>"/>
+						<span class="description"><?php _e('You can find it in your OneSky account. Click Settings, then API Key.');?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="api-secret"><?php _e('API Secret');?></label>
+					</th>
+					<td>
+						<input type="text" class="regular-text" name="api-secret" value="<?php _e($api_secret);?>"/>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="platform-id"><?php _e('Platform ID');?></label>
+					</th>
+					<td>
+						<input type="text" class="regular-text" name="platform-id" value="<?php _e($platform_id);?>"/>
+						<span class="description"><?php _e('Please refer to your OneSky account.');?></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>
+			<input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes" />
+		</p>
+
+	</form>
+
+</div>

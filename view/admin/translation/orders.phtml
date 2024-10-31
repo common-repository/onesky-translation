@@ -1,0 +1,95 @@
+<div class="wrap">
+
+	<h2 class="nav-tab-wrapper">
+		<a class="nav-tab" href="admin.php?page=onesky_translate&section=translate">Translate Posts</a>
+		<a class="nav-tab nav-tab-active" href="admin.php?page=onesky_translate&section=orders">View Orders</a>
+	</h2><br/>
+
+	<?php if ($ordered):?>
+	<div id="message" class="updated">
+		<p><strong><?php _e('Order placed! Thanks for using OneSky!');?></strong></p>
+	</div>
+	<?php endif;?>
+
+	<div class="metabox-holder">
+		<div class="stuffbox-container">
+			<?php foreach ($orders as $o):?>
+			<div class="stuffbox">
+				<h3 class="hndle"><span class="order-number">#<?php echo $o['id'];?></span> <span class="order-status <?php echo $o['status'] == 'Completed' ? 'completed' : 'in-progress';?>">[<?php _e($o['status']);?>]</span> <?php _e($o['from_locale_name'] . ' to ' . $o['to_locale_name']);?></h3>
+
+				<table class="form-table">
+					<tbody>
+						<tr valign="top">
+							<th scope="row">
+								<?php _e('Order Date');?>
+							</th>
+							<td>
+								<?php echo $o['order_date'];?>
+							</td>
+						</tr>
+						<tr valign="top">
+							<th scope="row">
+								<?php _e('Expected Delivery Date');?>
+							</th>
+							<td>
+								<?php echo $o['expected_delivery_date'];?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="inside order-box">
+					<?php if (isset($translations[$o['id']])): ?>
+					<?php foreach ($translations[$o['id']]['items'] as $item_id => $item):?>
+					<?php $post_id = substr($item_id, 5, 10);?>
+					<div class="stuffbox post-translation-box">
+						<h3 class="hndle"><span class="item-status <?php echo isset($is_translated[$post_id][$o['to_locale']]) ? 'posted' : 'new-post';?>" id="<?php _e($item_id);?>">[<?php echo isset($is_translated[$post_id][$o['to_locale']]) ? 'Posted' : 'New';?>]</span> <?php _e($original_posts[$post_id]->post_title);?></h3>
+
+						<table class="form-table order-detail-table">
+							<tbody>
+								<tr valign="top">
+									<th scope="row">
+										<?php _e('Translated Title');?>
+									</th>
+									<td>
+										<?php _e(nl2br(htmlspecialchars($item['title'])));?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<?php _e('Translated Content');?>
+									</th>
+									<td>
+										<?php _e(nl2br(htmlspecialchars($item['content'])));?>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="order-submit-box">
+							<form method="post" action="">
+								<input type="hidden" class="order-id" name="order-id" value="<?php echo $o['id'];?>"/>
+								<input type="hidden" class="item-id" name="item-id" value="<?php echo $item_id;?>"/>
+								<input type="hidden" class="locale" name="locale" value="<?php echo $o['to_locale'];?>"/>
+								<?php if (!isset($is_translated[$post_id][$o['to_locale']])):?>
+								<input type="button" class="button-primary publish-translation" value="<?php _e('Post this translation');?>"/>
+								<?php else:?>
+								<input type="hidden" class="translation-id" name="trnaslation-id" value="<?php echo $is_translated[$post_id][$o['to_locale']];?>"/>
+								<input type="button" class="button-secondary edit-translation" value="<?php _e('Edit this translation');?>"/>
+								<?php endif;?>
+							</form>
+						</div>
+					</div>
+					<?php endforeach;?>
+					<?php endif;?>
+				</div>
+			</div>
+			<?php endforeach;?>
+			<div class="tablenav">
+				<div class="tablenav-pages">
+					<?php echo $pagination->show();?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,89 @@
+<div class="wrap">
+
+	<div id="icon-options-general" class="icon32"><br/></div>
+	<h2><?php _e('Settings for Visitors'); ?></h2>
+
+	<?php if ($saved):?>
+	<div id="message" class="updated">
+		<p><strong><?php _e('Settings saved.');?></strong></p>
+	</div>
+	<?php endif;?>
+
+	<?php if ($signup):?>
+	<div id="message" class="updated">
+		<p><strong><?php _e('Congratulations! You have created an OneSky account successfully. You can translate posts and pages NOW!');?></strong></p>
+	</div>
+	<?php endif;?>
+
+	<form method="post" action="">
+
+
+		<table class="form-table">
+			<tbody>
+				<tr valign="top">
+					<th scope="row">
+						<label for="site-default-locale"><?php _e('Site Default Language');?></label>
+					</th>
+					<td>
+						<label><span><?php _e($languages[$site_default_locale]['name']['eng']);?></span></label>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="auto-detect-locale"><?php _e('Auto Detect Browser Language');?></label>
+					</th>
+					<td>
+						<label><input type="radio" name="auto-detect-locale" value="1" <?php echo $auto_detect_locale ? 'checked=checked' : '';?>/> <?php echo _e('On');?></label><br/>
+						<label><input type="radio" name="auto-detect-locale" value="0" <?php echo !$auto_detect_locale ? 'checked=checked' : '';?>/> <?php echo _e('Off');?></label><br/>
+						<span class="description"><?php _e('Switch the website language to visitor\'s language automatically');?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="filter-post-by-translation-existence"><?php _e('Translation Fallback');?></label><br/>
+						<span class="description"><?php _e('What if a post does not have translation?');?></span>
+					</th>
+					<td>
+						<?php foreach ($filter_post_by_translation_existence_options as $idx => $p):?>
+						<label><input type="radio" name="filter-post-by-translation-existence" value="<?php echo $idx;?>" <?php echo $filter_post_by_translation_existence == $idx ? 'checked=checked' : '';?>/> <?php echo $p;?></label><br/>
+						<?php endforeach;?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="language-switcher-position"><?php _e('Language Switcher Widget');?></label>
+					</th>
+					<td>
+						<label><input type="radio" name="language-switcher-position" value="main_sidebar" <?php echo $language_switcher_position == 'main_sidebar' ? 'checked=checked' : '';?>/> <?php echo _e('On');?></label><br/>
+						<label><input type="radio" name="language-switcher-position" value="none" <?php echo $language_switcher_position == 'none' ? 'checked=checked' : '';?>/> <?php echo _e('Off');?></label><br/>
+						<span class="description"><?php _e('Displaying the widget in your home page');?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="display-locale"><?php _e('Language Switcher Available Language Options');?></label>
+					</th>
+					<td>
+						<div style="height:240px; width:360px; overflow:auto;">
+						<ul>
+							<?php foreach ($languages as $l):?>
+							<li>
+								<label>
+									<input type="checkbox" name="display-locale[<?php echo $l['locale'];?>]" <?php echo isset($display_locales[$l['locale']]) ? 'checked=checked' : '';?> />&nbsp;<?php echo $l['name']['eng'];?>
+								</label>
+							</li>
+							<?php endforeach;?>
+						</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>
+			<input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes" />
+		</p>
+
+	</form>
+
+</div>

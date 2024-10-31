@@ -1,0 +1,8 @@
+<div class="alignleft actions">
+	<label><?php echo _e('Translate from');?></label>
+	<select name="loading-locale" id="loading-locale">
+		<?php foreach ($languages as $l):?>
+		<option value="<?php echo $l['locale'];?>" <?php echo $loading_locale == $l['locale'] ? 'selected=selected' : '';?>><?php echo $l['name']['eng'];?></option>
+		<?php endforeach;?>
+	</select>
+</div>

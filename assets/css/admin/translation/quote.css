@@ -1,0 +1,98 @@
+.post-list-table {
+	width: 73%;
+	float: left;
+}
+
+.wp-list-table .column-title {
+	width: 40%;
+}
+
+.wp-list-table .column-date {
+	width: 20%;
+}
+
+.wp-list-table .column-status {
+	width: 10%;
+}
+
+.wp-list-table .column-languages {
+	width: 30%;
+}
+
+.to-language {
+	width: 25%;
+	margin: 0 8px;
+	padding-bottom: 8px;
+}
+
+#target-language {
+	width: 230px;
+}
+
+.search-choice {
+	width: 180px;
+}
+
+.search-field input {
+	height: 30px !important;
+}
+
+.quotation {
+	width: 25%;
+	margin: 0 8px;
+	margin-top: 8px;
+	padding-bottom: 8px;
+}
+
+.quote-sub-detail {
+	clear: both;
+	margin-top: 60px;
+	border-top: #E0E0E0 1px solid;
+}
+
+.quote-sub-detail-text {
+	display: inline-block;
+	width: 160px;
+}
+
+.quote-sub-detail-value {
+	float: right;
+}
+
+.quote-main-detail-text {
+	display: inline-block;
+	width: 140px;
+	font-size: 16px;
+}
+
+.quote-main-detail-value {
+	flow: right;
+	font-size: 16px;
+	float: right;
+}
+
+.insufficient-credit {
+	color: red;
+}
+
+.insufficient-button {
+}
+
+#place-order {
+	font-size: 16px !important;
+	float: right;
+}
+
+.post-type-tab {
+	clear: both;
+}
+
+.subsubsub {
+	float: none;
+}
+
+.right-quote {
+	float: left;
+	width: 25%;
+}
+
